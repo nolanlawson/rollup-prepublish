@@ -14,7 +14,7 @@ to be exported to CommonJS users.
 Install
 ---
 
-    npm install rollup-prepublish
+    npm install -g rollup-prepublish
 
 Usage
 ----
