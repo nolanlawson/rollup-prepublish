@@ -69,7 +69,7 @@ There's also a straight-up JavaScript API:
 var rollupPrepublish = require('rollup-prepublish');
 rollupPrepublish({
   entry: 'index.js',
-  dest: 'bundle.js,
+  dest: 'bundle.js',
   browser: true // false by default
 }).then(function () {
   console.log('done!')
