@@ -8,6 +8,9 @@ What it does:
 - [rollup-plugin-node-resolve-auto](https://github.com/nolanlawson/rollup-plugin-node-resolve-auto) to automatically include third-party ES6 modules (but ignore third-party CommonJS modules)
 - [rollup-plugin-json](https://github.com/rollup/rollup-plugin-json) to automatically include `.json` dependencies
 
+The goal is to take your first-party _and_ third-party ES6 modules and bundle them into a very trim CommonJS file, suitable
+to be exported to CommonJS users.
+
 Install
 ---
 

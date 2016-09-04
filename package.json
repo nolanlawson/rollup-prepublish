@@ -1,7 +1,7 @@
 {
-  "name": "rollup-batteries-included",
+  "name": "rollup-prepublish",
   "version": "1.0.0",
-  "description": "rollup-prepublish ====",
+  "description": "Rollup tool to bundle ES6 modules into trim CJS files",
   "main": "index.js",
   "scripts": {
     "test": "standard"
@@ -29,5 +29,13 @@
   ],
   "devDependencies": {
     "standard": "^8.0.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nolanlawson/rollup-prepublish.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nolanlawson/rollup-prepublish/issues"
+  },
+  "homepage": "https://github.com/nolanlawson/rollup-prepublish#readme"
 }
