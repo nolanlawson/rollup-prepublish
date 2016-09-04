@@ -17,6 +17,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "denodeify": "^1.2.1",
+    "find-requires": "^0.2.2",
     "lie": "^3.1.0",
     "rollup": "^0.34.13",
     "rollup-plugin-json": "^2.0.1",

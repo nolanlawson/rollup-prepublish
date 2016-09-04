@@ -60,14 +60,18 @@ Also, Rollup consumers will get `src/index.js` (assuming that's your ES6 source)
 Usage: rollup-prepublish [options] [inputFile] [outputFile]
 
 Options:
-  -b, --browser  Bundle using browser-resolve instead of node-resolve  [boolean]
-  -q, --quiet    Don't print warnings about excluded/included deps     [boolean]
-  -h, --help     Show help                                             [boolean]
+  -b, --browser           Bundle using browser-resolve instead of node-resolve
+                                                                       [boolean]
+  -f, --fix-dependencies  Update dependencies in package.json to add external
+                          deps                                         [boolean]
+  -q, --quiet             Don't print warnings about excluded/included deps
+                                                                       [boolean]
+  -h, --help              Show help                                    [boolean]
 
 Examples:
-  rollup-prepublish               Bundle current project and output to stdout
-  rollup-prepublish --browser     Same thing, but emit a browser bundle
-  rollup-prepublish --quiet       Silence warnings
+  rollup-prepublish            Bundle current project and output to stdout
+  rollup-prepublish --browser  Same thing, but emit a browser bundle
+  rollup-prepublish --quiet    Silence warnings
 ```
 
 ### Tips
@@ -75,6 +79,9 @@ Examples:
 Since third-party ES6 modules are bundled by default, you can include them in your `devDependencies` instead of
 regular `dependencies`. (No reason to ship them to consumers, which unnecessarily increases `npm install` time!)
 On the other hand, note that this will prevent de-duplication of shared modules.
+
+If you do so, though, then any transitive dependencies should now be treated as regular dependencies. You can automatically
+add them to your `package.json` using `--fix-dependencies`.
 
 Also, if you have any `"browser"` code in your ES6 source, you should add those to `"browser"` as well:
 
@@ -87,7 +94,7 @@ Also, if you have any `"browser"` code in your ES6 source, you should add those 
 }
 ```
 
-You should also be sure to add a `"jsnext:main"` or `"module"` to your own `package.json`, so that consumers of your library
+You may also want to add a `"jsnext:main"` or `"module"` to your own `package.json`, so that consumers of your library
 can use `rollup-prepublish` script and get the same benefits.
 
 ```js
@@ -109,6 +116,7 @@ rollupPrepublish({
   entry: 'index.js',
   dest: 'bundle.js',
   browser: true, // false by default
+  fixDependencies: true, // false by default
   quiet: true // false by default
 }).then(function (code) {
   // if you don't specify a `dest`, then the code will be returned here

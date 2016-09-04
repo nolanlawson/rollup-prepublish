@@ -5,6 +5,9 @@ var argv = require('yargs')
   .boolean('browser')
   .alias('b', 'browser')
   .describe('browser', 'Bundle using browser-resolve instead of node-resolve')
+  .boolean('fix-dependencies')
+  .alias('f', 'fix-dependencies')
+  .describe('fix-dependencies', 'Update dependencies in package.json to add external deps')
   .boolean('quiet')
   .alias('q', 'quiet')
   .describe('quiet', "Don't print warnings about excluded/included deps")
@@ -21,12 +24,14 @@ var inputFile = argv._[0] || process.cwd()
 var outputFile = argv._[1]
 var browser = !!argv.browser
 var quiet = !!argv.quiet
+var fixDependencies = !!argv['fix-dependencies']
 
 rollupPrepublish({
   entry: inputFile,
   dest: outputFile,
   browser: browser,
-  quiet: quiet
+  quiet: quiet,
+  fixDependencies: fixDependencies
 }).then(function (code) {
   if (!outputFile) { // nothing written, write to stdout
     process.stdout.write(code)
