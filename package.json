@@ -1,6 +1,6 @@
 {
   "name": "rollup-prepublish",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Rollup tool to bundle ES6 modules into trim CJS files",
   "main": "index.js",
   "scripts": {
