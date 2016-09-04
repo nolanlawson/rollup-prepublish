@@ -1,7 +1,7 @@
 {
   "name": "rollup-batteries-included",
   "version": "1.0.0",
-  "description": "",
+  "description": "rollup-prepublish ====",
   "main": "index.js",
   "scripts": {
     "test": "standard"
