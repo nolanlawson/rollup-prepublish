@@ -18,7 +18,10 @@ rollupPrepublish({
   entry: inputFile,
   dest: outputFile,
   browser: browser
-}).then(function () {
+}).then(function (code) {
+  if (!outputFile) { // nothing written, write to stdout
+    process.stdout.write(code)
+  }
   process.exit(0)
 }).catch(function (err) {
   console.error(err.stack)

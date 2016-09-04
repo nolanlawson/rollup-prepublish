@@ -93,8 +93,10 @@ rollupPrepublish({
   entry: 'index.js',
   dest: 'bundle.js',
   browser: true // false by default
-}).then(function () {
-  console.log('done!')
+}).then(function (code) {
+  // if you don't specify a `dest`, then the code will be returned here
+  // as a string
+  console.log('code: ', code)
 }).catch(function (err) {
   console.error(err)
 })

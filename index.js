@@ -46,11 +46,10 @@ module.exports = function rollupPrepublish (opts) {
         format: 'cjs',
         dest: outputFile
       })
-    } else { // stdout
-      var result = bundle.generate({
+    } else { // just return the code
+      return bundle.generate({
         format: 'cjs'
-      })
-      process.stdout.write(result.code, 'utf8')
+      }).code
     }
   })
 }
