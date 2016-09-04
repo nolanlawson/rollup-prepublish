@@ -1,0 +1,33 @@
+{
+  "name": "rollup-batteries-included",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "standard"
+  },
+  "bin": {
+    "rollup-prepublish": "cli.js"
+  },
+  "keywords": [
+    "rollup",
+    "prepublish"
+  ],
+  "author": "Nolan Lawson <nolan@nolanlawson.com>",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "denodeify": "^1.2.1",
+    "lie": "^3.1.0",
+    "rollup": "^0.34.13",
+    "rollup-plugin-json": "^2.0.1",
+    "rollup-plugin-node-resolve-auto": "^1.0.0",
+    "yargs": "^5.0.0"
+  },
+  "files": [
+    "cli.js",
+    "index.js"
+  ],
+  "devDependencies": {
+    "standard": "^8.0.0"
+  }
+}
