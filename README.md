@@ -54,6 +54,22 @@ With the above configuration, CommonJS consumers will get:
 
 Also, Rollup consumers will get `src/index.js` (assuming that's your ES6 source).
 
+### `--help` output
+
+```
+Usage: rollup-prepublish [options] [inputFile] [outputFile]
+
+Options:
+  -b, --browser  Bundle using browser-resolve instead of node-resolve  [boolean]
+  -q, --quiet    Don't print warnings about excluded/included deps     [boolean]
+  -h, --help     Show help                                             [boolean]
+
+Examples:
+  rollup-prepublish               Bundle current project and output to stdout
+  rollup-prepublish --browser     Same thing, but emit a browser bundle
+  rollup-prepublish --quiet       Silence warnings
+```
+
 ### Tips
 
 Since third-party ES6 modules are bundled by default, you can include them in your `devDependencies` instead of
