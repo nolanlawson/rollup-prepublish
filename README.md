@@ -42,23 +42,45 @@ You can pass in the input file and output file as the first and second arguments
   },
   "browser": {
     "lib/index.js": "lib/browser.js"
-  },
-  "module": {
-    "src/index.js"
   }
   /* ... */
 }
 ```
 
-Using the above system, CommonJS consumers will get `lib/index.js` if they are running in Node, and `lib/browser.js` if they
-are using Webpack, Browserify, etc. Also, Rollup consumers will get `src/index.js` (assuming that's your ES6 source).
+With the above configuration, CommonJS consumers will get:
+
+- `lib/index.js` if they are using Node, and
+- `lib/browser.js` if they are using Webpack, Browserify, etc.
+
+Also, Rollup consumers will get `src/index.js` (assuming that's your ES6 source).
+
+### Tips
 
 Since third-party ES6 modules are bundled by default, you can include them in your `devDependencies` instead of
-regular `dependencies`. No reason to ship them to consumers, which unnecessarily increases `npm install` time!
+regular `dependencies`. (No reason to ship them to consumers, which unnecessarily increases `npm install` time!)
 On the other hand, note that this will prevent de-duplication of shared modules.
 
-You should probably also add a `jsnext:main` or `module` to your own `package.json`, so that consumers of your library
+Also, if you have any `"browser"` code in your ES6 source, you should add those to `"browser"` as well:
+
+```js
+{
+  "browser": {
+    "lib/index.js": "lib/browser.js",
+    "src/somefile.js": "src/somefile-browser.js"
+  }
+}
+```
+
+You should also be sure to add a `"jsnext:main"` or `"module"` to your own `package.json`, so that consumers of your library
 can use `rollup-prepublish` script and get the same benefits.
+
+```js
+{
+  "module": {
+    "src/index.js"
+  }
+}
+```
 
 JavaScript API
 ----
