@@ -10,10 +10,14 @@ var stat = denodeify(fs.stat)
 var readFile = denodeify(fs.readFile)
 var path = require('path')
 
+function noop () {
+}
+
 module.exports = function rollupPrepublish (opts) {
   var inputFile = opts.entry
   var outputFile = opts.dest
   var browser = opts.browser
+  var quiet = opts.quiet
   return Promise.resolve().then(function () {
     return stat(inputFile)
   }).then(function (stats) {
@@ -32,11 +36,13 @@ module.exports = function rollupPrepublish (opts) {
   }).then(function (entry) {
     return rollup.rollup({
       entry: entry,
+      onwarn: quiet && noop,
       plugins: [
         json(),
         nodeResolveAuto({
           browser: browser,
-          extensions: ['.js', '.json']
+          extensions: ['.js', '.json'],
+          onwarn: quiet && noop
         })
       ]
     })

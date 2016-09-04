@@ -92,7 +92,8 @@ var rollupPrepublish = require('rollup-prepublish');
 rollupPrepublish({
   entry: 'index.js',
   dest: 'bundle.js',
-  browser: true // false by default
+  browser: true, // false by default
+  quiet: true // false by default
 }).then(function (code) {
   // if you don't specify a `dest`, then the code will be returned here
   // as a string
